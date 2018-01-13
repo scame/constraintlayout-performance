@@ -63,8 +63,7 @@
         android:layout_below="@id/header_container"
         android:layout_marginEnd="@dimen/dimen_default"
         android:layout_marginStart="@dimen/dimen_default"
-        android:layout_marginTop="@dimen/dimen_default"
-        android:text="Short description of articles goes here. For example story about new It company which presents some product to the public." />
+        android:layout_marginTop="@dimen/dimen_default" />
 
 
     <FrameLayout
@@ -87,7 +86,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dimen_default"
             android:layout_marginTop="@dimen/dimen_default"
-            android:text="Facebook story about giving people what they want"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@android:color/white" />
 
@@ -101,7 +99,6 @@
         android:layout_marginEnd="@dimen/dimen_default"
         android:layout_marginStart="@dimen/dimen_default"
         android:layout_marginTop="@dimen/dimen_default"
-        android:text="What Facebook says about current statys of affraint gives us credibility in case of a mistake"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
 

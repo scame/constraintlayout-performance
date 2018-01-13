@@ -15,12 +15,17 @@ class MainActivity : AppCompatActivity() {
 
     private val frameMetricsHandler = Handler()
 
+    private var callbacksCount = 0
+    private var durationSumMs: Double = 0.0
+
     private val frameMetricsAvailableListener = Window.OnFrameMetricsAvailableListener {
         _, frameMetrics, _ ->
         val frameMetricsCopy = FrameMetrics(frameMetrics)
         // Layout measure duration in Nano seconds
         val layoutMeasureDurationNs = frameMetricsCopy.getMetric(FrameMetrics.LAYOUT_MEASURE_DURATION)
 
+        ++callbacksCount
+        durationSumMs += layoutMeasureDurationNs / 1_000_000.0
         Log.d(MainActivity::class.java.canonicalName, "layoutMeasureDurationNs: " + layoutMeasureDurationNs)
     }
 
@@ -30,21 +35,26 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
         feedRv = findViewById(R.id.feed_rv)
+        populateAdapter()
     }
 
     override fun onStart() {
         super.onStart()
+        callbacksCount = 0
+        durationSumMs = 0.0
         window.addOnFrameMetricsAvailableListener(frameMetricsAvailableListener, frameMetricsHandler)
-        populateAdapter()
     }
 
     override fun onStop() {
         super.onStop()
         window.removeOnFrameMetricsAvailableListener(frameMetricsAvailableListener)
+        Log.d(MainActivity::class.java.canonicalName, "callbacksCount: " + callbacksCount)
+        Log.d(MainActivity::class.java.canonicalName, "durationSumMs: " + durationSumMs)
+        Log.d(MainActivity::class.java.canonicalName, "averageMsg: " + durationSumMs / callbacksCount)
     }
 
     private fun populateAdapter() {
-        val feedList = List(1000, { generateFeedModel() })
+        val feedList = List(100, { generateFeedModel() })
         feedRv.adapter = FeedAdapter(feedList)
         feedRv.layoutManager = LinearLayoutManager(this)
     }
