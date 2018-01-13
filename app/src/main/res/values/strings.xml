@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">ConstraintLayout Benchmarks</string>
 
-    <string name="comments_template">% comments</string>
-    <string name="shares_template">% shares</string>
+    <string name="comments_template">Hi, %1$d comments</string>
+    <string name="shares_template">Hi, %1$d shares</string>
 </resources>

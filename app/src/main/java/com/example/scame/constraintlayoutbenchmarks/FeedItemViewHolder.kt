@@ -24,8 +24,9 @@ class FeedItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         articleStartText.text = feedModel.articleStartText
         communityName.text = feedModel.communityName
         emotionsNumber.text = feedModel.emotionsNumber.toString()
-        itemView.context.getString(R.string.shares_template, feedModel.commentsNumber.toString())
-        commentsNumber.text = itemView.context.getString(R.string.comments_template, feedModel.commentsNumber.toString())
-        sharesNumber.text = itemView.context.getString(R.string.shares_template, feedModel.sharesNumber.toString())
+
+        val cntx = itemView.context
+        commentsNumber.text = cntx.getString(R.string.comments_template, feedModel.commentsNumber)
+        sharesNumber.text = cntx.getString(R.string.shares_template, feedModel.sharesNumber)
     }
 }

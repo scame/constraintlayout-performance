@@ -10,7 +10,7 @@ class FeedAdapter(private val feedList: List<FeedModel>): RecyclerView.Adapter<F
         FeedItemViewHolder(
                 LayoutInflater
                         .from(parent.context)
-                        .inflate(R.layout.feed_item_constraint, parent, false)
+                        .inflate(R.layout.feed_item_legacy, parent, false)
         )
 
 
