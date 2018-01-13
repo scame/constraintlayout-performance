@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun populateAdapter() {
-        val feedList = List(500, { generateFeedModel() })
+        val feedList = List(1000, { generateFeedModel() })
         feedRv.adapter = FeedAdapter(feedList)
         feedRv.layoutManager = LinearLayoutManager(this)
     }
